@@ -47,7 +47,7 @@ body {
   }
 
   .section-card {
-    @apply mx-auto mb-6 max-w-[940px] rounded-2xl border border-card-border bg-card-bg py-8 shadow-card;
+    @apply mx-3 mb-6 max-w-[940px] rounded-2xl border border-card-border bg-card-bg py-8 shadow-card sm:mx-auto;
     scroll-margin-top: 100px;
   }
 
