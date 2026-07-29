@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  line-height: 25px;
+  /* font-size: 14px; */
+  font-size: 13px;
+}
+.container-resume {
+  width: 1024px;
+  padding: 0;
+  margin: 0 auto;
+}
+.profile {
+  width: 150px;
+  height: 150px;
+  background-color: #dde2eb;
+  background-image: url(/images/profile/resume-image.jpeg);
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 5px 0;
+}
+.header-right {
+  width: 83%;
+  padding: 10px 0 0;
+}
+.name {
+  font-size: 30px;
+  font-weight: bold;
+}
+.address1 {
+  font-size: 20px;
+  color: #767676;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.address2 {
+  margin-top: 5px;
+  font-weight: bold;
+}
+.address3 {
+  margin-top: 3px;
+}
+.experience-details {
+  display: flex;
+}
+.title {
+  margin: 15px 0px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #69599c;
+  font-size: 25px;
+}
+.project-title {
+  margin: 10px 0px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #69599c;
+  font-size: 15px;
+}
+.Role {
+  font-weight: bold;
+  font-size: 20px;
+}
+.companyName {
+  font-size: 13px;
+  color: #424242;
+  font-weight: 700;
+}
+.contactdetails p {
+  display: flex;
+  align-items: center;
+}
+
+.contant {
+  text-align: justify;
+  line-height: 30px;
+}
+.education_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 0 10px 0;
+}
+.bold {
+  font-weight: bold;
+}
+.institute {
+  font-size: 13px;
+  margin: 0px 0px 0px;
+}
+.skills_box {
+  display: flex;
+  margin: 10px 0px 0px;
+}
+.skills_box p {
+  margin: 0;
+}
+.skills_box p:nth-child(1) {
+  width: 4%;
+}
+.skills_box p:nth-child(2) {
+  width: 35%;
+  font-weight: bold;
+}
+.skills_box p:nth-child(3) {
+  width: 4%;
+}
+.skills_box p:nth-child(4) {
+  width: 55%;
+  white-space: nowrap;
+}
+.d-flex {
+  display: flex;
+  align-items: flex-start;
+}
+.d-flex p:first-child {
+  width: 5%;
+  line-height: 30px;
+}
+.d-flex p:nth-child(2) {
+  width: 95%;
+  line-height: 30px;
+}
+.PROJECT_DESCRIPTION p {
+  text-align: justify;
+}
+.sign {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-end;
+  margin-top: 15px;
+}
+.contactdetails {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+  font-size: 17px;
+  padding: 5px;
+  margin: 10px 0;
+}
+.contactdetails i {
+  color: #69599c;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.hide {
+  display: none;
+}
+.container-resume .row {
+  display: flex;
+  justify-content: space-between;
+}
+.left,
+.right {
+  /* width: 47%; */
+  width: 50%;
+}
+
+.Declaration {
+  margin: 15px 0 0;
+}
+
+@media print {
+  html,
+  body {
+    overflow: visible !important;
+  }
+
+  html,
+  body,
+  .my-resume,
+  .container-resume {
+    background: #fff !important;
+  }
+
+  .my-resume,
+  .container-resume {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .container-resume {
+    transform: scale(0.995) !important;
+    transform-origin: top center !important;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .my-resume {
+    overflow-x: hidden;
+    scale: 0.9;
+  }
+}
+
+/* Small utility classes formerly supplied by Bootstrap, kept local to this
+   file since resumeview.css is intentionally not converted to Tailwind
+   (its pixel-precise layout is captured directly by the PDF export). */
+.col {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+.fw-bold {
+  font-weight: bold;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+.mt-1 {
+  margin-top: 0.25rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mt-3 {
+  margin-top: 0.75rem;
+}
+.me-2 {
+  margin-right: 0.5rem;
+}
+.ms-3 {
+  margin-left: 0.75rem;
+}

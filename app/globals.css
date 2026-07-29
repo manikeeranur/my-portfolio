@@ -1,0 +1,527 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f3f1fd;
+  --surface: #ffffff;
+  --text: #1e1b2e;
+  --text-secondary: #64748b;
+  --accent: #6d5cd8;
+  --accent-hover: #5b4bc4;
+  --accent-light: rgba(109, 92, 216, 0.1);
+  --teal: #2dd4bf;
+  --pink: #ec4899;
+  --card-bg: #ffffff;
+  --card-border: #ebe9f5;
+  --shadow: 0 4px 24px rgba(30, 27, 46, 0.06);
+  --shadow-lg: 0 16px 40px rgba(30, 27, 46, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+.my-resume {
+  background: #fff;
+  color: #000;
+}
+
+.swiper-wrapper {
+  margin: 10px 0 0;
+}
+
+@layer components {
+  /* ============================================================
+     SHARED SECTION SHELL
+     ============================================================ */
+  .home-container {
+    @apply mx-auto max-w-[900px] px-5;
+  }
+
+  .section-card {
+    @apply mx-auto mb-6 max-w-[940px] rounded-2xl border border-card-border bg-card-bg py-8 shadow-card;
+    scroll-margin-top: 100px;
+  }
+
+  .section-header {
+    @apply mb-7 flex flex-wrap items-center justify-between gap-3;
+  }
+
+  .section-header-left {
+    @apply flex items-center gap-3;
+  }
+
+  .section-number {
+    @apply inline-flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-lg bg-accent-light text-[13px] font-bold text-accent;
+  }
+
+  .section-title {
+    @apply m-0 text-[1.3rem] font-extrabold text-text md:text-[1.1rem];
+  }
+
+  .section-viewall {
+    @apply cursor-pointer whitespace-nowrap text-[13px] font-semibold text-accent no-underline hover:underline;
+  }
+
+  .skills-reveal {
+    @apply opacity-0 translate-y-5 transition-[opacity,transform] duration-[600ms] ease-out;
+  }
+  .skills-reveal.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* ============================================================
+     BUTTONS
+     ============================================================ */
+  .download-button-new {
+    @apply inline-flex items-center gap-2 rounded-lg border-[1.5px] border-transparent bg-accent px-6 py-3 text-sm font-semibold text-white duration-300 ease-smooth hover:-translate-y-1 hover:bg-accent-hover hover:shadow-[0_12px_30px_rgba(109,92,216,0.3)];
+  }
+
+  .btn-cta {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-br from-accent to-accent-hover px-[22px] py-[10px] text-[13px] font-bold text-white shadow-[0_8px_20px_rgba(109,92,216,0.25)] duration-300 ease-smooth hover:-translate-y-1 hover:text-white hover:shadow-[0_14px_32px_rgba(109,92,216,0.4)] active:translate-y-0;
+  }
+
+  .download-button-outline {
+    @apply inline-flex items-center gap-2 rounded-lg border-[1.5px] border-accent bg-transparent px-6 py-3 text-sm font-semibold text-accent duration-300 ease-smooth hover:-translate-y-1 hover:bg-accent hover:text-white hover:shadow-[0_12px_30px_rgba(109,92,216,0.25)];
+  }
+
+  /* ============================================================
+     NAVBAR
+     ============================================================ */
+  .navbar-scrolled {
+    @apply bg-white/95 shadow-[0_4px_30px_rgba(30,27,46,0.08)] backdrop-blur-md;
+  }
+
+  .nav-link {
+    @apply cursor-pointer rounded-full px-3.5 py-1.5 text-[13px] font-semibold text-text duration-300 ease-smooth;
+  }
+  .nav-link.active {
+    @apply bg-accent text-white;
+  }
+  .nav-link:hover:not(.active) {
+    @apply bg-accent-light text-accent;
+  }
+
+  .navbar-brand {
+    @apply flex items-center gap-2 text-text no-underline duration-300 ease-smooth hover:opacity-85;
+  }
+
+  .navbar-avatar {
+    @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent to-pink text-[13px] font-bold tracking-wide text-white transition-transform duration-300;
+  }
+  .navbar-brand:hover .navbar-avatar {
+    @apply scale-110;
+  }
+
+  .navbar-brand-name {
+    @apply text-sm font-bold text-text;
+  }
+
+  .navbar-resume-btn {
+    @apply ml-3 inline-flex items-center rounded-lg bg-accent px-[18px] py-[9px] text-[13px] font-semibold text-white duration-300 ease-smooth hover:-translate-y-0.5 hover:bg-accent-hover;
+  }
+
+  .navbar-toggler {
+    @apply flex h-9 w-9 items-center justify-center rounded-lg border border-card-border text-text;
+  }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .site-footer {
+    @apply mt-2 border-t border-card-border bg-[#faf9fd] pt-12;
+  }
+
+  .footer-grid {
+    @apply grid grid-cols-1 gap-8 pb-8 sm:grid-cols-2 lg1:grid-cols-[1.6fr_1fr_1fr_1fr];
+  }
+
+  .footer-brand {
+    @apply mb-2.5 text-base font-extrabold text-text;
+  }
+  .footer-tagline {
+    @apply mb-4 max-w-[260px] text-[13px] leading-[1.7] text-text-secondary;
+  }
+  .footer-social-row {
+    @apply flex gap-2.5;
+  }
+  .footer-social-row a {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border border-card-border text-text-secondary no-underline duration-300 ease-smooth hover:border-accent hover:bg-accent hover:text-white;
+  }
+
+  .footer-col-title {
+    @apply mb-3.5 text-sm font-bold text-text;
+  }
+  .footer-link {
+    @apply mb-2.5 block cursor-pointer text-[13px] text-text-secondary no-underline transition-colors duration-200 hover:text-accent;
+  }
+
+  .footer-contact-line {
+    @apply mb-2.5 flex items-center gap-2 text-[13px] text-text-secondary;
+  }
+
+  .footer-bottom {
+    @apply flex flex-wrap justify-between gap-2 border-t border-card-border py-5 text-xs text-text-secondary;
+  }
+
+  /* ============================================================
+     ABOUT
+     ============================================================ */
+  .about-grid {
+    @apply grid grid-cols-1 items-center gap-8 lg1:grid-cols-[1.2fr_0.8fr];
+  }
+
+  .about-bio {
+    @apply mb-[18px] leading-[1.8] text-text-secondary;
+  }
+
+  .about-checklist {
+    @apply m-0 mb-6 list-none p-0;
+  }
+  .about-checklist li {
+    @apply mb-2.5 flex items-center gap-2.5 text-sm font-medium text-text;
+  }
+  .about-checklist i {
+    @apply text-base text-accent;
+  }
+
+  .about-illustration {
+    @apply relative flex items-center justify-center p-6 lg1:order-none order-[-1] mx-auto max-w-[220px] lg1:max-w-none lg1:mx-0;
+  }
+  .about-illustration img {
+    @apply relative z-[1] mx-auto block w-full max-w-[280px];
+  }
+  .about-illustration-blob {
+    @apply absolute inset-[8%_10%] z-0 bg-gradient-to-br from-accent-light to-white;
+    border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
+  }
+  .about-code-badge {
+    @apply absolute left-[2%] top-[4%] z-[2] flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-lg text-white shadow-[0_8px_20px_rgba(109,92,216,0.35)];
+  }
+  .about-code-panel {
+    @apply absolute -right-[4%] bottom-[6%] z-[2] flex w-[130px] flex-col rounded-[10px] bg-[#0f172a] p-2.5 shadow-card-lg;
+  }
+  .about-code-panel-dots {
+    @apply mb-2 flex gap-1;
+  }
+  .about-code-panel-dots i {
+    @apply inline-block h-1.5 w-1.5 rounded-full bg-[#475569];
+  }
+  .about-code-line {
+    @apply mt-1.5 block h-[5px] rounded;
+  }
+
+  /* ============================================================
+     EXPERIENCE — timeline
+     ============================================================ */
+  .timeline {
+    @apply relative pl-0.5;
+  }
+  .timeline::before {
+    content: "";
+    @apply absolute bottom-1.5 top-1.5 left-[19px] w-0.5 bg-card-border;
+  }
+
+  .timeline-item {
+    @apply relative flex gap-[18px] pb-8 last:pb-0;
+  }
+
+  .timeline-dot {
+    @apply relative z-[1] flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[15px] text-white shadow-[0_4px_12px_rgba(30,27,46,0.15)];
+  }
+
+  .timeline-content {
+    @apply pt-1;
+  }
+  .timeline-year {
+    @apply mb-1 text-xs font-bold uppercase tracking-wide text-accent;
+  }
+  .timeline-role {
+    @apply text-base font-bold text-text;
+  }
+  .timeline-company {
+    @apply mb-2 text-[13px] text-text-secondary;
+  }
+  .timeline-desc {
+    @apply max-w-[520px] text-[13px] leading-[1.7] text-text-secondary;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ============================================================
+     HOME / HERO
+     ============================================================ */
+  #home {
+    @apply pt-10;
+  }
+
+  .hero-grid {
+    @apply grid grid-cols-1 items-center gap-10 pb-8 text-center lg1:grid-cols-[1.15fr_0.85fr] lg1:text-left;
+  }
+
+  .home-greeting {
+    @apply mb-3.5 inline-flex items-center gap-1.5 rounded-full bg-accent-light px-4 py-1.5 text-[13px] font-bold text-accent;
+  }
+
+  .wave {
+    @apply inline-block text-lg;
+    transform-origin: 70% 70%;
+  }
+
+  .myJob {
+    @apply m-0 mb-1 text-[clamp(2rem,4.5vw,2.8rem)] font-extrabold leading-[1.15] text-text;
+  }
+
+  .role {
+    @apply m-0 mb-4 min-h-[40px] text-[clamp(1.2rem,2.6vw,1.6rem)] font-bold text-accent;
+  }
+
+  .hero-subtitle {
+    @apply mx-auto mb-6 max-w-full text-[15px] leading-[1.8] text-text-secondary lg1:mx-0 lg1:max-w-[460px];
+  }
+
+  .hero-actions {
+    @apply flex flex-wrap justify-center gap-3 lg1:justify-start;
+  }
+
+  .hero-social {
+    @apply mt-8;
+  }
+  .hero-social-label {
+    @apply mb-2.5 block text-center text-[13px] text-text-secondary lg1:text-left;
+  }
+  .hero-social-row {
+    @apply flex justify-center gap-2.5 lg1:justify-start;
+  }
+  .hero-social-btn {
+    @apply flex h-10 w-10 items-center justify-center rounded-full border border-card-border bg-white text-text-secondary no-underline duration-300 ease-smooth hover:-translate-y-1 hover:border-accent hover:bg-accent hover:text-white;
+  }
+
+  .hero-image-col {
+    @apply relative mt-3 flex items-center justify-center lg1:mt-0;
+  }
+  .hero-visual-img {
+    @apply block h-auto w-full max-w-[560px];
+  }
+
+  /* ============================================================
+     STATS BAR
+     ============================================================ */
+  .stats-bar {
+    @apply mx-auto mb-6 grid max-w-[940px] grid-cols-2 gap-4 rounded-2xl border border-card-border bg-card-bg px-4 py-5 shadow-card sm:px-8 md:grid-cols-4;
+  }
+
+  .stat-card {
+    @apply flex items-center gap-3;
+  }
+  .stat-icon {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-light text-lg text-accent;
+  }
+  .stat-value {
+    @apply text-xl font-extrabold leading-tight text-text;
+  }
+  .stat-label {
+    @apply text-xs text-text-secondary;
+  }
+
+  /* ============================================================
+     TECH STACK
+     ============================================================ */
+  .tech-box {
+    @apply flex h-full flex-col items-center gap-2 rounded-xl border border-card-border bg-white px-2.5 py-[18px] duration-300 ease-smooth hover:-translate-y-1 hover:border-accent hover:shadow-[0_8px_20px_rgba(109,92,216,0.12)];
+  }
+  .tech-box span {
+    @apply text-center text-xs font-semibold text-text-secondary;
+  }
+
+  /* ============================================================
+     CAROUSEL (shared: TechStack / Projects)
+     ============================================================ */
+  .carousel-wrap {
+    @apply flex flex-wrap items-center gap-2.5;
+  }
+
+  .carousel-swiper {
+    @apply order-2 min-w-0 flex-1;
+  }
+  .carousel-swiper .swiper-slide {
+    @apply flex h-auto flex-col;
+  }
+
+  .carousel-arrow {
+    @apply flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-card-border bg-white text-accent shadow-[0_2px_8px_rgba(30,27,46,0.06)] duration-300 ease-smooth hover:bg-accent hover:text-white;
+  }
+  .carousel-arrow-prev {
+    @apply order-1;
+  }
+  .carousel-arrow-next {
+    @apply order-3;
+  }
+  .carousel-arrow.swiper-button-disabled {
+    @apply cursor-default opacity-35 hover:bg-white hover:text-accent;
+  }
+
+  .carousel-dots {
+    @apply order-4 mt-4 flex basis-full justify-center;
+  }
+
+  .custom-dot {
+    @apply mx-1 inline-block h-2 w-2 rounded-full bg-card-border transition-[opacity,transform,background] duration-300;
+  }
+  .custom-dot.swiper-pagination-bullet-active {
+    @apply scale-[1.3] bg-accent;
+  }
+
+  /* ============================================================
+     PROJECTS
+     ============================================================ */
+  .project-card {
+    @apply flex h-full flex-col overflow-hidden rounded-2xl border border-card-border bg-white duration-300 ease-smooth hover:-translate-y-1 hover:shadow-card-lg;
+  }
+
+  .project-thumb {
+    @apply flex h-[140px] shrink-0 items-center justify-center;
+  }
+  .project-thumb span {
+    @apply text-[46px] font-extrabold text-white opacity-90;
+  }
+
+  .project-body {
+    @apply flex flex-1 flex-col gap-2 p-5;
+  }
+  .project-title {
+    @apply text-base font-bold text-text;
+  }
+  .project-desc {
+    @apply text-[13px] leading-[1.6] text-text-secondary;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .project-tags {
+    @apply mt-1 flex flex-wrap gap-1.5;
+  }
+  .project-tag {
+    @apply rounded-full bg-accent-light px-2.5 py-1 text-[11px] font-semibold text-accent;
+  }
+  .project-links {
+    @apply mt-auto flex gap-[18px] pt-3;
+  }
+  .project-link {
+    @apply inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent no-underline hover:underline;
+  }
+
+  /* ============================================================
+     YOUTUBE
+     ============================================================ */
+  .youtube-panel {
+    @apply flex flex-col items-stretch gap-7;
+  }
+
+  .youtube-videos-grid {
+    @apply mt-7 grid grid-cols-1 gap-5 md:grid-cols-3;
+  }
+
+  .youtube-thumb {
+    @apply relative flex aspect-video min-w-0 flex-1 basis-[260px] cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-card-border bg-[#f4f2ff] p-0 no-underline;
+  }
+  .youtube-modal-overlay {
+    @apply fixed inset-0 z-[1000] flex items-center justify-center bg-[rgba(10,10,20,0.8)] p-6;
+  }
+  .youtube-modal {
+    @apply relative w-full max-w-[900px];
+  }
+  .youtube-modal-frame {
+    @apply relative aspect-video w-full overflow-hidden rounded-lg bg-black shadow-[0_20px_60px_rgba(0,0,0,0.4)];
+  }
+  .youtube-modal-frame iframe {
+    @apply absolute inset-0 h-full w-full border-0;
+  }
+  .youtube-modal-close {
+    @apply absolute -top-11 right-0 flex h-9 w-9 items-center justify-center rounded-full border-2 border-white/75 bg-[rgba(15,15,30,0.45)] text-base text-white;
+  }
+  .youtube-thumb-img {
+    @apply absolute inset-0 h-full w-full object-cover transition-transform duration-[350ms];
+  }
+  .youtube-thumb:hover .youtube-thumb-img {
+    @apply scale-105;
+  }
+  .youtube-play {
+    @apply relative flex h-14 w-14 items-center justify-center rounded-full border-2 border-white/75 bg-[rgba(15,15,30,0.45)] text-xl text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)];
+  }
+
+  .youtube-info {
+    @apply flex-1;
+  }
+  .youtube-heading {
+    @apply mb-2 text-lg font-extrabold text-text;
+  }
+  .youtube-info p {
+    @apply mb-[18px] text-sm leading-[1.8] text-text-secondary;
+  }
+
+  .youtube-stats {
+    @apply mb-5 grid grid-cols-2 gap-3 md:grid-cols-4;
+  }
+  .youtube-stat {
+    @apply rounded-[10px] bg-accent-light px-1.5 py-3 text-center;
+  }
+  .youtube-stat-value {
+    @apply text-base font-extrabold text-accent;
+  }
+  .youtube-stat-label {
+    @apply mt-0.5 text-[11px] text-text-secondary;
+  }
+
+  /* ============================================================
+     CONTACT
+     ============================================================ */
+  .contact-grid {
+    @apply grid grid-cols-1 gap-9 lg1:grid-cols-[0.9fr_1.1fr];
+  }
+
+  .contact-details-col {
+    @apply flex flex-col gap-7;
+  }
+  .contact-detail-row {
+    @apply flex items-center gap-3.5;
+  }
+  .contact-detail-icon {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent-light text-lg text-accent;
+  }
+  .contact-detail-title {
+    @apply text-xs text-text-secondary;
+  }
+  .contact-detail-value {
+    @apply break-words text-sm font-semibold text-text;
+  }
+
+  .contact-form-row {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2;
+  }
+
+  .form-group {
+    @apply mb-4;
+  }
+  .form-label {
+    @apply mb-1.5 block text-[13px] font-semibold text-text;
+  }
+  .form-control {
+    @apply w-full rounded-lg border border-card-border bg-white px-3.5 py-2.5 text-sm text-text duration-300 ease-smooth placeholder:text-[#a8a5b8] focus:border-accent focus:outline-none focus:ring-[3px] focus:ring-accent-light;
+  }
+
+  .btn-send {
+    @apply inline-flex items-center justify-center rounded-lg bg-accent px-[22px] py-[10px] text-[13px] font-bold text-white duration-300 ease-smooth hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-[0_10px_24px_rgba(109,92,216,0.3)];
+  }
+}
