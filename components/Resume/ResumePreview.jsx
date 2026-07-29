@@ -86,37 +86,40 @@ const ResumePreview = () => {
       <div
         ref={topbarRef}
         className="resume-topbar"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "12px 16px",
-          backgroundColor: "#f8f8f8",
-          borderBottom: "1px solid #e0e0e0",
-          position: "sticky",
-          top: 0,
-          zIndex: 10,
-        }}
+        style={{ position: "sticky", top: 0, zIndex: 10 }}
       >
-        <button
-          onClick={handleDownload}
-          disabled={isGenerating}
-          style={{
-            padding: "10px 28px",
-            backgroundColor: isGenerating ? "#9e8fc4" : "#69599c",
-            color: "#fff",
-            border: "none",
-            borderRadius: "6px",
-            cursor: isGenerating ? "not-allowed" : "pointer",
-            fontSize: "15px",
-            fontWeight: "600",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-          }}
-        >
-          <i className={`fa ${isGenerating ? "fa-spinner fa-spin" : "fa-download"}`} aria-hidden="true" />
-          {isGenerating ? "Generating PDF…" : "Download PDF"}
-        </button>
+        <div className="border-b border-[#ebe9f5] bg-white/95 px-4 py-3 shadow-[0_8px_30px_rgba(30,27,46,0.08)] backdrop-blur-md sm:px-6">
+          <div className="mx-auto flex max-w-[1024px] items-center justify-between gap-4">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#f0edff] text-[#69599c]">
+                  <i className="fa fa-file-text-o text-base" aria-hidden="true" />
+                </span>
+                <div className="min-w-0">
+                  <h1 className="m-0 truncate text-sm font-bold leading-5 text-[#1e1b2e] sm:text-base">
+                    Resume Preview
+                  </h1>
+                  <p className="m-0 hidden text-xs leading-4 text-[#77738a] sm:block">
+                    Review your resume or save a PDF copy
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleDownload}
+              disabled={isGenerating}
+              className="group inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#69599c] to-[#806fd0] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(105,89,156,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(105,89,156,0.36)] focus:outline-none focus:ring-4 focus:ring-[#69599c]/20 disabled:cursor-not-allowed disabled:opacity-65 disabled:hover:translate-y-0 sm:px-5"
+            >
+              <i
+                className={`fa ${isGenerating ? "fa-spinner fa-spin" : "fa-download"} text-sm`}
+                aria-hidden="true"
+              />
+              <span>{isGenerating ? "Generating…" : "Download PDF"}</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       <MyResume />
