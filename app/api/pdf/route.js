@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import path from "node:path";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -8,9 +9,16 @@ async function launchBrowser() {
   if (process.platform === "linux") {
     const chromium = (await import("@sparticuz/chromium")).default;
     const puppeteer = await import("puppeteer-core");
+    const chromiumBin = path.join(
+      process.cwd(),
+      "node_modules",
+      "@sparticuz",
+      "chromium",
+      "bin"
+    );
     return puppeteer.launch({
       args: [...chromium.args, "--no-sandbox", "--disable-setuid-sandbox"],
-      executablePath: await chromium.executablePath(),
+      executablePath: await chromium.executablePath(chromiumBin),
       headless: true,
     });
   }
