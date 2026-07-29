@@ -2,12 +2,20 @@
 
 import { useId } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const Carousel = ({ items, renderItem, perView = { base: 1, md: 3 }, gap = 20, keyField = "id" }) => {
+const Carousel = ({
+  items,
+  renderItem,
+  perView = { base: 1, md: 3 },
+  gap = 20,
+  keyField = "id",
+  autoplay = false,
+  loop = false,
+}) => {
   const uid = useId().replace(/[:]/g, "");
   const prevClass = `car-prev-${uid}`;
   const nextClass = `car-next-${uid}`;
@@ -20,13 +28,23 @@ const Carousel = ({ items, renderItem, perView = { base: 1, md: 3 }, gap = 20, k
       </button>
 
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination, Autoplay]}
         navigation={{ prevEl: `.${prevClass}`, nextEl: `.${nextClass}` }}
         pagination={{
           el: `.${dotClass}`,
           clickable: true,
           renderBullet: (i, className) => `<span class="${className} custom-dot"></span>`,
         }}
+        autoplay={
+          autoplay
+            ? {
+                delay: 3500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }
+            : false
+        }
+        loop={loop}
         spaceBetween={gap}
         slidesPerView={perView.base}
         slidesPerGroup={perView.base}

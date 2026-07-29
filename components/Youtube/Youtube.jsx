@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import SectionHeader from "@/components/common/SectionHeader";
 import useScrollAnimation from "@/hooks/useScrollAnimation";
+
+const Carousel = dynamic(() => import("@/components/common/Carousel"), { ssr: false });
 
 const CHANNEL_URL = "https://www.youtube.com/@studentcodertech8500";
 
@@ -79,27 +82,34 @@ const Youtube = () => {
           </div>
         </div>
 
-        <div className="youtube-videos-grid">
-          {VIDEOS.map((video) => (
-            <button
-              type="button"
-              className="youtube-thumb"
-              key={video.id}
-              onClick={() => setActiveVideo(video)}
-              aria-label={`Play ${video.title}`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="youtube-thumb-img"
-                src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                alt={video.title}
-                loading="lazy"
-              />
-              <span className="youtube-play">
-                <i className="fa fa-play" aria-hidden="true" />
-              </span>
-            </button>
-          ))}
+        <div className="youtube-videos-carousel">
+          <Carousel
+            items={VIDEOS}
+            keyField="id"
+            perView={{ base: 1, md: 3 }}
+            gap={20}
+            autoplay
+            loop
+            renderItem={(video) => (
+              <button
+                type="button"
+                className="youtube-thumb"
+                onClick={() => setActiveVideo(video)}
+                aria-label={`Play ${video.title}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  className="youtube-thumb-img"
+                  src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+                  alt={video.title}
+                  loading="lazy"
+                />
+                <span className="youtube-play">
+                  <i className="fa fa-play" aria-hidden="true" />
+                </span>
+              </button>
+            )}
+          />
         </div>
       </div>
 

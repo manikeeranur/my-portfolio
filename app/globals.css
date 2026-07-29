@@ -222,40 +222,177 @@ body {
   /* ============================================================
      EXPERIENCE — timeline
      ============================================================ */
-  .timeline {
-    @apply relative pl-0.5;
+  .portfolio-timeline {
+    @apply relative;
   }
-  .timeline::before {
+  .portfolio-timeline::before {
     content: "";
-    @apply absolute bottom-1.5 top-1.5 left-[19px] w-0.5 bg-card-border;
+    @apply absolute bottom-4 left-[23px] top-6 w-0.5 bg-[#e8e6f1];
   }
 
-  .timeline-item {
-    @apply relative flex gap-[18px] pb-8 last:pb-0;
+  .portfolio-timeline-item {
+    @apply relative mb-6 grid grid-cols-[48px_minmax(0,1fr)] gap-5 last:mb-0;
   }
 
-  .timeline-dot {
-    @apply relative z-[1] flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[15px] text-white shadow-[0_4px_12px_rgba(30,27,46,0.15)];
+  .portfolio-timeline-rail {
+    @apply relative z-[1] flex flex-col items-center;
   }
 
-  .timeline-content {
-    @apply pt-1;
+  .portfolio-timeline-dot {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white;
+    background: var(--timeline-gradient);
+    box-shadow:
+      0 0 0 8px var(--timeline-soft),
+      0 9px 24px var(--timeline-glow);
   }
-  .timeline-year {
-    @apply mb-1 text-xs font-bold uppercase tracking-wide text-accent;
+
+  .portfolio-timeline-marker {
+    @apply mt-12 h-3 w-3 rounded-full ring-4 ring-white;
+    background: var(--timeline-accent);
   }
-  .timeline-role {
-    @apply text-base font-bold text-text;
+
+  .portfolio-experience-card {
+    @apply grid min-w-0 grid-cols-1 gap-5 rounded-2xl border bg-white px-7 py-6 text-[12px];
+    border-color: var(--timeline-border);
+    box-shadow: 0 8px 28px rgba(30, 27, 46, 0.045);
   }
-  .timeline-company {
-    @apply mb-2 text-[13px] text-text-secondary;
+
+  .portfolio-experience-card-main {
+    @apply min-w-0;
   }
-  .timeline-desc {
-    @apply max-w-[520px] text-[13px] leading-[1.7] text-text-secondary;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+
+  .portfolio-experience-date-pill {
+    @apply mb-4 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-[0.02em];
+    color: var(--timeline-accent);
+    background: var(--timeline-soft);
+    border-color: var(--timeline-border);
+  }
+
+  .portfolio-experience-date-pill svg {
+    @apply shrink-0;
+  }
+
+  .portfolio-timeline-role {
+    @apply m-0 text-[12px] font-extrabold leading-tight text-text;
+  }
+
+  .portfolio-timeline-company {
+    @apply mt-4 flex items-center gap-3 text-[12px] font-semibold leading-6 text-text-secondary;
+  }
+
+  .portfolio-timeline-company svg {
+    @apply h-[19px] w-[19px] shrink-0;
+    color: var(--timeline-accent);
+  }
+
+  .portfolio-experience-divider {
+    @apply my-5 h-px w-full bg-[#ebe9f5];
+  }
+
+  .portfolio-experience-details {
+    @apply flex flex-col gap-1;
+  }
+
+  .portfolio-experience-detail-row {
+    @apply grid min-w-0 grid-cols-[20px_120px_10px_minmax(0,1fr)] items-start gap-2 text-[12px] leading-6 text-text-secondary;
+  }
+
+  .portfolio-experience-detail-row svg {
+    @apply mt-0.5 h-[19px] w-[19px] shrink-0;
+    color: var(--timeline-accent);
+  }
+
+  .portfolio-experience-detail-row strong {
+    @apply font-bold text-text;
+  }
+
+  .portfolio-experience-colon {
+    @apply font-bold text-text-secondary;
+  }
+
+  .portfolio-experience-summary {
+    @apply flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left;
+    color: var(--timeline-accent);
+    border-color: var(--timeline-border);
+    background: linear-gradient(145deg, var(--timeline-soft), rgba(255, 255, 255, 0.88));
+  }
+
+  .portfolio-experience-summary-icon {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full border bg-white/60;
+    border-color: var(--timeline-border);
+  }
+
+  .portfolio-experience-summary-copy {
+    @apply flex min-w-0 flex-1 flex-col;
+  }
+
+  .portfolio-experience-summary-label {
+    @apply text-xs font-bold text-text-secondary;
+  }
+
+  .portfolio-experience-summary-value {
+    @apply mt-1 text-[12px] font-extrabold leading-tight;
+  }
+
+  .portfolio-experience-status {
+    @apply mt-3 rounded-full px-3 py-1 text-[12px] font-bold;
+    color: var(--timeline-accent);
+    background: var(--timeline-soft);
+  }
+
+  .portfolio-experience-status.is-current {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  @media (max-width: 767px) {
+    .portfolio-timeline::before {
+      @apply left-[23px] top-6;
+    }
+    .portfolio-timeline-item {
+      @apply mb-5 grid-cols-[48px_minmax(0,1fr)] gap-3;
+    }
+    .portfolio-timeline-dot {
+      @apply h-12 w-12;
+      box-shadow:
+        0 0 0 5px var(--timeline-soft),
+        0 7px 18px var(--timeline-glow);
+    }
+    .portfolio-timeline-marker {
+      @apply mt-9 h-2.5 w-2.5;
+    }
+    .portfolio-experience-card {
+      @apply gap-4 rounded-xl px-4 py-5;
+    }
+    .portfolio-experience-date-pill {
+      @apply mb-3 text-[12px];
+    }
+    .portfolio-timeline-role {
+      @apply text-[12px];
+    }
+    .portfolio-timeline-company {
+      @apply text-[12px];
+    }
+    .portfolio-experience-divider {
+      @apply my-4;
+    }
+    .portfolio-experience-detail-row {
+      @apply grid-cols-[20px_minmax(0,1fr)] gap-x-2 gap-y-0.5 text-[12px];
+    }
+    .portfolio-experience-detail-row strong {
+      @apply col-start-2;
+    }
+    .portfolio-experience-detail-row .portfolio-experience-colon {
+      @apply hidden;
+    }
+    .portfolio-experience-detail-row > span:last-child {
+      @apply col-start-2;
+    }
+    .portfolio-experience-summary {
+      @apply flex-wrap py-3;
+    }
+    .portfolio-experience-summary-value {
+      @apply text-[12px];
+    }
   }
 
   /* ============================================================
@@ -429,12 +566,12 @@ body {
     @apply flex flex-col items-stretch gap-7;
   }
 
-  .youtube-videos-grid {
-    @apply mt-7 grid grid-cols-1 gap-5 md:grid-cols-3;
+  .youtube-videos-carousel {
+    @apply mt-7;
   }
 
   .youtube-thumb {
-    @apply relative flex aspect-video min-w-0 flex-1 basis-[260px] cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-card-border bg-[#f4f2ff] p-0 no-underline;
+    @apply relative flex aspect-video w-full min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-card-border bg-[#f4f2ff] p-0 no-underline;
   }
   .youtube-modal-overlay {
     @apply fixed inset-0 z-[1000] flex items-center justify-center bg-[rgba(10,10,20,0.8)] p-6;
