@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { name: "Skills", to: "techstack", offset: -80 },
   { name: "Projects", to: "projects", offset: -80 },
   { name: "Experience", to: "experience", offset: -80 },
+  { name: "Education", to: "education", offset: -80 },
   { name: "YouTube", to: "youtube", offset: -80 },
   { name: "Contact", to: "contact", offset: -80 },
 ];

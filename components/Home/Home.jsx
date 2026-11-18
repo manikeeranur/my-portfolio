@@ -11,7 +11,12 @@ const TypeAnimation = dynamic(() => import("react-type-animation").then((m) => m
   ssr: false,
 });
 
-const heroVisual = "/images/profile/hero-visual1.png";
+const HeroScene3D = dynamic(() => import("./HeroScene3D"), {
+  ssr: false,
+  loading: () => <div className="about-scene-loading" />,
+});
+
+const heroPhoto = "/images/profile/manikandan_profile.jpeg";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
@@ -99,14 +104,9 @@ const Home = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <motion.img
-              src={heroVisual}
-              alt={displayName}
-              className="hero-visual-img"
-              animate={{ y: [0, -14, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            />
+            <div className="hero-scene" role="img" aria-label={displayName}>
+              <HeroScene3D photo={heroPhoto} />
+            </div>
           </motion.div>
         </div>
 

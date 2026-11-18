@@ -47,7 +47,7 @@ const Youtube = () => {
   return (
     <div className="section-card" id="youtube" ref={ref}>
       <div className="home-container">
-        <SectionHeader number="05" title="YouTube Channel" viewAllText="View channel" viewAllTo="youtube" />
+        <SectionHeader number="06" title="YouTube Channel" viewAllText="View channel" viewAllTo="youtube" />
 
         <div className={`youtube-panel ${isVisible ? "is-visible" : ""}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}

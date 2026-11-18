@@ -104,6 +104,7 @@ export const MyResumeContextProvider = ({ children }) => {
 
   const educationDetails = eduList.map((ed) => ({
     degree: ed.degree,
+    field: ed.field || "",
     institute: ed.institution,
     year:
       ed.startDate && ed.endDate

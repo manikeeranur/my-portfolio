@@ -3,6 +3,7 @@ import About from "@/components/About/About";
 import TechStack from "@/components/TechStack/TechStack";
 import Projects from "@/components/Projects/Projects";
 import Experience from "@/components/Experience/Experience";
+import Education from "@/components/Education/Education";
 import Youtube from "@/components/Youtube/Youtube";
 import Contact from "@/components/Contact/Contact";
 
@@ -14,6 +15,7 @@ export default function HomePage() {
       <TechStack />
       <Projects />
       <Experience />
+      <Education />
       <Youtube />
       <Contact />
     </>

@@ -5,6 +5,12 @@ import { motion } from "framer-motion";
 import { MyResumeContext } from "@/components/context/MyResumeContext";
 import SectionHeader from "@/components/common/SectionHeader";
 import useScrollAnimation from "@/hooks/useScrollAnimation";
+import dynamic from "next/dynamic";
+
+const AboutScene3D = dynamic(() => import("./AboutScene3D"), {
+  ssr: false,
+  loading: () => <div className="about-scene-loading" />,
+});
 
 const CHECKLIST = [
   "Clean & Maintainable Code",
@@ -60,19 +66,9 @@ const About = () => {
             <span className="about-code-badge">
               <i className="fa fa-code" aria-hidden="true" />
             </span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/storyset/programmer1.png" alt="Developer illustration" />
-            <span className="about-code-panel">
-              <span className="about-code-panel-dots">
-                <i />
-                <i />
-                <i />
-              </span>
-              <i className="about-code-line" style={{ width: "70%", background: "#6d5cd8" }} />
-              <i className="about-code-line" style={{ width: "45%", background: "#2dd4bf" }} />
-              <i className="about-code-line" style={{ width: "60%", background: "#ec4899" }} />
-              <i className="about-code-line" style={{ width: "35%", background: "#6d5cd8" }} />
-            </span>
+            <div className="about-scene" aria-hidden="true">
+              <AboutScene3D />
+            </div>
           </motion.div>
         </div>
       </div>
